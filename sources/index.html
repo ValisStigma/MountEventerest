@@ -6,8 +6,11 @@
 </head>
 <body>
 
-    <div data-ng-app>
+    <div data-ng-app="lafete">
 
+        <div ng-controller="EventListController">
+            {{ events }}
+        </div>
     </div>
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>

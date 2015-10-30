@@ -1,7 +1,3 @@
-/**
- * Created by rafael on 21.10.2015.
- */
-
 define([], function () {
     return function($scope) {
         $scope.events = [

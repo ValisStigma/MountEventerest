@@ -16,6 +16,9 @@
             <div class="event_guests"></div>
             <div class="event_comments"></div>
         </div>
+        <div data-ng-hide="isSelected" data-ng-controller="EventListController" class="master_view">
+            {{ events }}
+        </div>
     </div>
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>

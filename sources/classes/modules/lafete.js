@@ -3,7 +3,7 @@ define(['frameworks/angular', 'app/controllers/EventListController'], function (
 
     // Create new empty app/module named 'lafete'
     var Lafete = Angular.module('lafete', []);
-    EventListController.$inject = ['$scope'];
+    EventListController.$inject = ['$scope', "$http"];
     Lafete.controller('EventListController', EventListController);
     // export module to use it in other classes
     return Lafete;

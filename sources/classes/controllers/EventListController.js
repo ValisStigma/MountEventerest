@@ -1,10 +1,12 @@
 define([], function () {
-    return function($scope) {
-        $scope.events = [
-            { name: 'Lunch', place: 'Rapperswil', date: new Date('2015-10-10T10:00:00.000Z') },
-            { name: 'Dinner', place: 'Zürich', date: new Date('2015-04-05T16:00:00.000Z') },
-            { name: 'Dinner', place: 'Rapperswil', date: new Date('2015-12-08T17:00:00.000Z') }
-        ];
+    return function($scope, $http) {
+        var response = $http.get("http://localhost:8080/api/events");
+        response.success(function(data, status, headers, config){
+           $scope.events = data;
+        });
+        response.error(function(data, status, headers, config){
+            $scope.events = "Could not load events";
+        });
     }
 });
 

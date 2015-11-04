@@ -17,7 +17,9 @@
             <div class="event_comments"></div>
         </div>
         <div data-ng-hide="isSelected" data-ng-controller="EventListController" class="master_view">
-            {{ events }}
+            <ul>
+                <li data-ng-repeat="event in events">{{ event.description }}</li>
+            </ul>
         </div>
     </div>
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>

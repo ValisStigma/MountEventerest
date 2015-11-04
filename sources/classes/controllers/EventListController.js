@@ -5,7 +5,7 @@ define([], function () {
            $scope.events = data.events;
         });
         response.error(function(data, status, headers, config){
-            $scope.events = "Could not load events";
+            $scope.events = "Could not load events\n" + status;
         });
     }
 });

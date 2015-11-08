@@ -7,6 +7,9 @@ define([], function () {
         response.error(function(data, status, headers, config){
             $scope.events = "Could not load events\n" + status;
         });
+        $scope.click = function(event){
+
+        }
     }
 });
 

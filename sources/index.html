@@ -5,26 +5,8 @@
     <title></title>
 </head>
 <body>
-
     <div data-ng-app="lafete">
-        <div data-ng-show="isSelected" data-ng-controller="EventDetailController" class="detail_view">
-            <div class="event_title"></div>
-            <div class="event_time"></div>
-            <div class="event_target"></div>
-            <div class="event_contributor"></div>
-            <div class="event_location"></div>
-            <div class="event_guests"></div>
-            <div class="event_comments"></div>
-        </div>
-        <div data-ng-hide="isSelected" data-ng-controller="EventListController" class="master_view">
-            <div data-ng-repeat="event in events">
-                <div>
-                    <p>{{ event.times.begin | date: "dd:MM:yyyy ' at '  HH:mm" }}</p>
-                    <p>{{ event.name }}</p>
-                    <p>{{ event.location.name }}  {{event.location.plz}}  {{event.location.city}}</p>
-                </div>
-            </div>
-        </div>
+        <div data-ng-view></div>
     </div>
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>

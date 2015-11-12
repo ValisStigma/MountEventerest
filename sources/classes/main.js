@@ -2,25 +2,26 @@ require.config({
     // base url relative to the index.html
     baseUrl: './',
     paths: {
-        'frameworks/angular': 'frameworks/angular/angular.min',
-        'frameworks/angularRoute': 'frameworks/angular/angular-route',
+        'angular': 'frameworks/angular/angular.min',
+        'angularRoute': 'frameworks/angular/angular-route',
         'routesConfig': 'classes/routesConfig',
-        'EventListController': 'classes/controllers/EventListController',
-        'EventDetailController': 'classes/controllers/EventDetailController',
-        'app': 'classes'
+        'eventDetailController': 'classes/controllers/EventDetailController',
+        'eventListController': 'classes/controllers/EventListController',
+        'app': 'classes/'
     },
     // angular does not support async loading out of the box -> use the shim loader
     shim: {
-        'frameworks/angular': {
+        'angular': {
             exports: 'angular'
         },
-        'frameworks/angularRoute': {
-            deps: ['frameworks/angular'],
-            exports: 'angular-route'
+        'angularRoute': {
+            deps: ['angular']
         }
     }
 });
 
-define(['frameworks/angular', 'frameworks/angularRoute', 'app/modules/lafete'], function (Angular, AngularRoute, Lafete) {
-    return Angular.bootstrap(Lafete);
+require(['angular', 'app/modules/lafete'], function(Angular, Lafete) {
+    Angular.element(document).ready(function() {
+        Angular.bootstrap(document, [Lafete.name]);
+    })
 });

@@ -1,4 +1,4 @@
-define(['app/model/event'], function (Event) {
+define(['app/model/Event'], function (Event) {
 	'use strict';
 
 	var EventFactory = {

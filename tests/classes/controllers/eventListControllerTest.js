@@ -1,4 +1,4 @@
-define(['app/controllers/event/listController', 'frameworks/angular', 'libraries/angularMocks'],
+define(['app/controllers/EventListController', 'frameworks/angular', 'libraries/angularMocks'],
 	function (EventListController, Angular, AngularMocks) {
 	'use strict';
 

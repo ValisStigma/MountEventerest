@@ -1,4 +1,4 @@
-define(['tests/factories/eventFactory','app/model/event'],
+define(['tests/factories/eventFactory','app/model/Event'],
 	function(EventFactory, Event) {
 	'use strict';
 

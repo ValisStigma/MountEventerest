@@ -1,22 +1,27 @@
-define([], function () {
-    'use strict';
+define(['app/controllers/event/listController', 'frameworks/angular', 'libraries/angularMocks'],
+	function (EventListController, Angular, AngularMocks) {
+	'use strict';
 
-    describe('EventListController', function() {
-        beforeEach(module('app'));
-        var $controller;
-        beforeEach(inject(function(_$controller_){
-            // The injector unwraps the underscores (_) from around the parameter names when matching
-            $controller = _$controller_;
-        }));
+	var scope, eventRepository, $httpBackend;
 
-        describe('property scope', function() {
-            var scope = {};
-            var controller = $controller('EventListController', {$scope: $scope});
+	beforeEach(AngularMocks.inject(function($injector) {
+		scope = $injector.get('$rootScope').$new();
 
+		var events = [{id: 1, name: 'Dinner'},{id: 2, name: 'Lunch'},{id: 3, name: 'Brunch'}];
+		// Mock repository to test controller only
+		eventRepository = {
+			all: function(successCallback) {
+				successCallback(events);
+			}
+		};
+	}));
 
-            it('contains 3 events', function() {
-              expect(eventListController.events.length).toBe(3);
-            });
-        });
-    });
+	describe('EventListController', function() {
+		describe('property scope', function() {
+			it('contains 3 events', function() {
+				var eventListController = new EventListController(scope, eventRepository);
+				expect(3).toBe(eventListController.scope.events.length);
+			});
+		});
+	});
 });

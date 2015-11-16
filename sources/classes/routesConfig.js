@@ -1,7 +1,4 @@
-/**
- * Created by co on 11.11.15.
- */
-define(['eventDetailController', 'eventListController'], function(eventDetailController, eventListController) {
+define(['eventDetailController', 'eventListController', 'addEventController'], function(eventDetailController, eventListController, addEventController) {
 
     function config($routeProvider) {
         $routeProvider.when('/', {
@@ -10,8 +7,12 @@ define(['eventDetailController', 'eventListController'], function(eventDetailCon
         })
 
             .when('/event/:id', {
-                templateUrl:'views/eventList.html',
+                templateUrl:'views/eventDetail.html',
                 controller: eventDetailController
+            })
+            .when('/add', {
+                templateUrl:'views/addEvent.html',
+                controller: addEventController
             });
     }
     config.$inject = ['$routeProvider'];

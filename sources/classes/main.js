@@ -5,8 +5,10 @@ require.config({
         'angular': 'frameworks/angular/angular.min',
         'angularRoute': 'frameworks/angular/angular-route',
         'routesConfig': 'classes/routesConfig',
+        'eventRepository': 'classes/repository/eventRepository',
         'eventDetailController': 'classes/controllers/EventDetailController',
         'eventListController': 'classes/controllers/EventListController',
+        'addEventController': 'classes/controllers/addEventController',
         'app': 'classes/'
     },
     // angular does not support async loading out of the box -> use the shim loader

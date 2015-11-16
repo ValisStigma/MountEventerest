@@ -1,3 +1,8 @@
 <div>
-    <p>Event list</p>
+    <a href="#/add">Add</a>
+</div>
+<div data-ng-repeat="event in events">
+    <a href="#/event/{{event.id}}">
+        <p>{{event}}</p>
+    </a>
 </div>

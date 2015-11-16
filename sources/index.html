@@ -6,17 +6,8 @@
 </head>
 <body>
     <div data-ng-view></div>
-    <div >
-        <div data-ng-show="isSelected"  class="detail_view">
-            <div class="event_title"></div>
-            <div class="event_time"></div>
-            <div class="event_target"></div>
-            <div class="event_contributor"></div>
-            <div class="event_location"></div>
-            <div class="event_guests"></div>
-            <div class="event_comments"></div>
-        </div>
-
+    <div data-ng-show="error">
+        <p>{{error}}</p>
     </div>
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>

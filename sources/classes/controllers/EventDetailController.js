@@ -1,12 +1,22 @@
 define([], function () {
-    return function($scope, $http) {
-        var response = $http.get("http://localhost:8080/api/events");
-        response.success(function(data, status, headers, config){
-            $scope.events = data.events;
+    var EventDetailController = function($scope, eventRepository, $routeParams){
+        var event = $routeParams.id;
+        eventRepository.get(event, function(data){
+            $scope.event = data;
+        }, function(){
+            $scope.error = "Error";
         });
-        response.error(function(data, status, headers, config){
-            $scope.events = "Could not load events\n" + status;
-        });
-    }
+        $scope.addGuest = function(){
+            var guest = $scope.guest;
+            var event = $scope.event;
+            eventRepository.addGuest(event, guest, function(data){
+                $scope.event.guests.push(data);
+            }, function(){
+                $scope.error = "Error";
+            });
+        }
+    };
+    EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams'];
+    return EventDetailController;
 });
 

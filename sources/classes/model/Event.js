@@ -1,5 +1,5 @@
 define([], function(){
-    var Event = function(name, description, targetGroup, contributionsDescription, location, times, maximalAmoutOfGuests, id) {
+    var Event = function(name, description, targetGroup, contributionsDescription, location, times, maximalAmountOfGuests, id) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -7,12 +7,12 @@ define([], function(){
         this.contributionsDescription = contributionsDescription;
         this.location = location;
         this.times = times;
-        this.maximalAmoutOfGuests = maximalAmoutOfGuests;
+        this.maximalAmountOfGuests = maximalAmountOfGuests;
         Object.defineProperty(this, 'begin', {
             get: function() {
                 return this.times.begin;
             },
-            set: function(begin) {CF2Cl2
+            set: function(begin) {
                 this.times.begin = begin;
             }
         });

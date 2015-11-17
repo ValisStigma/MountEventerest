@@ -3,6 +3,9 @@
 </div>
 <div data-ng-repeat="event in events">
     <a href="#/event/{{event.id}}">
-        <p>{{event}}</p>
+        <hr size="1">
+        <p>{{event.name}}</p>
+        <p>{{event.times.begin | date:"dd.MM.yy HH:mm"}} Uhr</p>
+        <p>{{event.location.name}}</p>
     </a>
 </div>

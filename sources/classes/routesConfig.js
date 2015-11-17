@@ -1,4 +1,4 @@
-define(['eventDetailController', 'eventListController', 'addEventController'], function(eventDetailController, eventListController, addEventController) {
+define(['eventDetailController', 'eventListController'], function(eventDetailController, eventListController) {
 
     function config($routeProvider) {
         $routeProvider.when('/', {
@@ -9,10 +9,6 @@ define(['eventDetailController', 'eventListController', 'addEventController'], f
             .when('/event/:id', {
                 templateUrl:'views/eventDetail.html',
                 controller: eventDetailController
-            })
-            .when('/add', {
-                templateUrl:'views/addEvent.html',
-                controller: addEventController
             });
     }
     config.$inject = ['$routeProvider'];

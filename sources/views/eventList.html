@@ -1,6 +1,3 @@
-<div>
-    <a href="#/add">Add</a>
-</div>
 <div data-ng-repeat="event in events">
     <a href="#/event/{{event.id}}">
         <hr size="1">
@@ -8,4 +5,32 @@
         <p>{{event.times.begin | date:"dd.MM.yy HH:mm"}} Uhr</p>
         <p>{{event.location.name}}</p>
     </a>
+</div>
+<div>
+    <a data-ng-click="toggleAdd()">Add</a>
+    <div data-ng-show="adding">
+        <form id="add_event_form">
+            <label for="event_name">Name</label>
+            <input type="text" data-ng-model="event.name" id="event_name" required="required">
+            <label for="event_description">Description</label>
+            <input type="text" data-ng-model="event.description" id="event_description" required="required">
+            <label for="event_targetGroup">Target Group</label>
+            <input type="text" data-ng-model="event.targetGroup" id="event_targetGroup" required="required">
+            <label for="event_contribution_description">Contributions Description</label>
+            <input type="text" data-ng-model="event.contributionsDescription" id="event_contribution_description" required="required">
+            <label for="event_location_name">Location Name</label>
+            <input type="text" data-ng-model="event.location.name" id="event_location_name" required="required">
+            <label for="event_location_street">Location Street</label>
+            <input type="text" data-ng-model="event.location.street" id="event_location_street" required="required">
+            <label for="event_location_plz">Location PLZ</label>
+            <input type="number" data-ng-model="event.location.plz" id="event_location_plz" min="1000" max="9999" required="required">
+            <label for="event_location_city">Location City</label>
+            <input type="text" data-ng-model="event.location.city" id="event_location_city" required="required">
+            <label for="time_start">Time Start</label>
+            <input type="date" data-ng-model="event.times.begin" id="time_start" required="required">
+            <label for="time_end">Time end</label>
+            <input type="date" data-ng-model="event.times.end" id="time_end" required="required">
+            <button type="submit" data-ng-click="addEvent()">Add</button>
+        </form>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 define([], function () {
-    function EventListController($scope, eventRepository) {
+    var EventListController = function($scope, eventRepository) {
 
         eventRepository.all(function(data){
            $scope.events = data.events;

@@ -41,3 +41,8 @@ form label {
     background-color:#2b669a;
     color: white;
 }
+
+.btn-default {
+    font-size: 20px;
+    margin: 4px;
+}

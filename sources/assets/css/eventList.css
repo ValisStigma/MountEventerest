@@ -41,19 +41,29 @@ form label {
     color: white;
 }
 
-.eventContainer {
+.event-row {
     display: flex;
+    margin-top: 10px;
 }
 
-.btn-default {
+.event-btn {
     font-size: 20px;
     margin: auto;
+    padding: 0 40px 0 40px;
 }
 
 .header-row {
     background-color: #0f0f0f;
 }
 
-.addEventBtn {
+.addEvent-btn {
     margin-top: 18px;
+}
+
+.addEvent-container {
+    display: flex;
+}
+
+.addEvent-form {
+    margin:auto;
 }

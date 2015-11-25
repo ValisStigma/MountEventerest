@@ -14,10 +14,26 @@
             <hr size="1">
             <div class="form-group">
                 <div class="row">
-                    <label class="col-md-2" for="time_start">Begin</label>
-                    <input class="col-md-4" type="date" data-ng-model="event.times.begin" id="time_start" required="required">
-                    <label class="col-md-2" for="time_end">End</label>
-                    <input class="col-md-4" type="date" data-ng-model="event.times.end" id="time_end" required="required">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="time_start">Begin</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" data-ng-model="event.times.begin" id="time_start" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="time_end">End</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" data-ng-model="event.times.end" id="time_end" required="required">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">

@@ -2,6 +2,11 @@ body  {
     background-image:url("../image/event_background.jpg");
 }
 
+.main-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    height:100vh;
+}
+
 .container a {
     text-decoration: none;
     color: black;
@@ -66,4 +71,5 @@ form label {
 
 .addEvent-form {
     margin:auto;
+
 }

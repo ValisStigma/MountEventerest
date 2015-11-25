@@ -7,10 +7,13 @@
     <link href="assets/css/eventList.css" rel="stylesheet">
 </head>
 <body>
+<div class="main-container">
     <div class="container" data-ng-view></div>
     <div data-ng-show="error">
         <p>{{error}}</p>
     </div>
+</div>
+
     <script src="./libraries/require/require-js.min.js" data-main="./classes/main.js"></script>
 </body>
 </html>

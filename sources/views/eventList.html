@@ -1,9 +1,17 @@
-<h1 class="title">Events</h1>
-<button type="button" class="btn btn-round glyphicon glyphicon-plus" id="addEventBtn" data-ng-click="toggleAdd()"></button>
-<div data-ng-show="adding">
-    <form id="add_event_form" class="navbar-form navbar-left">
-        <input class="form-control" placeholder="Event" type="text" data-ng-model="event.name" id="event_name" required="required">
-        <hr size="1">
+
+<div class="row header-row">
+    <div class="col-xs-10">
+        <h1 class="title">Events</h1>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" class="btn btn-round glyphicon glyphicon-plus addEventBtn" data-ng-click="toggleAdd()"></button>
+    </div>
+</div>
+<div class="row">
+    <div data-ng-show="adding">
+        <form id="add_event_form" class="navbar-form navbar-left">
+            <input class="form-control" placeholder="Event" type="text" data-ng-model="event.name" id="event_name" required="required">
+            <hr size="1">
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2" for="time_start">Begin</label>
@@ -38,15 +46,20 @@
                     <input class="form-control col-md-4" placeholder="City" type="text" data-ng-model="event.location.city" id="event_location_city" required="required">
                 </div>
             </div>
-        <hr size="1">
-        <button class="btn btn-default" type="submit" data-ng-click="addEvent()">Save Changes</button>
-    </form>
+            <hr size="1">
+            <button class="btn btn-default" type="submit" data-ng-click="addEvent()">Save Changes</button>
+        </form>
+    </div>
 </div>
-<div data-ng-repeat="event in events">
-    <a href="#/event/{{event.id}}" class="btn btn-default">
-        <p>{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
-        <p>{{event.name}} </p>
-        <p>{{event.location.name}} {{event.location.street}}</p>
-        <p>{{event.location.city}}</p>
-    </a>
+<div class="row">
+    <div data-ng-repeat="event in events" class="eventContainer">
+        <a href="#/event/{{event.id}}" class="btn btn-default">
+            <p>{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
+            <p>{{event.name}} </p>
+            <p>{{event.location.name}} {{event.location.street}}</p>
+            <p>{{event.location.city}}</p>
+        </a>
+    </div>
+
 </div>
+

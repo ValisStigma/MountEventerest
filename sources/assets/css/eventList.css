@@ -38,11 +38,22 @@ form label {
 }
 
 .title {
-    background-color:#2b669a;
     color: white;
+}
+
+.eventContainer {
+    display: flex;
 }
 
 .btn-default {
     font-size: 20px;
-    margin: 4px;
+    margin: auto;
+}
+
+.header-row {
+    background-color: #0f0f0f;
+}
+
+.addEventBtn {
+    margin-top: 18px;
 }

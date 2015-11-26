@@ -1,10 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="row">
+    <div data-ng-show="adding" class="addEvent-container">
+        <form id="add_event_form" class="navbar-form addEvent-form">
+            <input class="form-control" placeholder="Event" type="text" data-ng-model="event.name" id="event_name" required="required">
+            <hr size="1">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="time_start">Begin</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" data-ng-model="event.times.begin" id="time_start" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="time_end">End</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" data-ng-model="event.times.end" id="time_end" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-</body>
-</html>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="event_description">Description</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" placeholder="Description" type="text" data-ng-model="event.description" id="event_description" required="required">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_targetGroup">Target Group</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" placeholder="Target Group" type="text" data-ng-model="event.targetGroup" id="event_targetGroup" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_contribution_description">Contributions Description</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" placeholder="Contribution" type="text" data-ng-model="event.contributionsDescription" id="event_contribution_description" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_location_name">Location Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" placeholder="Location Name" type="text" data-ng-model="event.location.name" id="event_location_name" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_location_street">Location Street</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" placeholder="Street" type="text" data-ng-model="event.location.street" id="event_location_street" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_location_plz">Location PLZ</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" data-ng-model="event.location.plz" id="event_location_plz" min="1000" max="9999" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="event_location_city">Location City</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" placeholder="City" type="text" data-ng-model="event.location.city" id="event_location_city" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr size="1">
+            <button class="btn btn-default" type="submit" data-ng-click="addEvent()">Save Changes</button>
+        </form>
+    </div>
+</div>

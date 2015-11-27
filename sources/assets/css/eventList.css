@@ -7,7 +7,7 @@ body  {
     height:100vh;
 }
 
-.container a {
+.container {
     text-decoration: none;
     color: black;
 }
@@ -36,10 +36,6 @@ form label {
 .btn-round.btn-xs {
     width: 24px;
     height: 24px;
-}
-
-.glyphicon-plus {
-    color: white;
 }
 
 .title {
@@ -71,5 +67,9 @@ form label {
 
 .addEvent-form {
     margin:auto;
+}
 
+.glyphicon-plus {
+    color: white;
+    padding:8px;
 }

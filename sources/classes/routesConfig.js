@@ -9,7 +9,13 @@ define(['eventDetailController', 'eventListController'], function(eventDetailCon
             .when('/event/:id', {
                 templateUrl:'views/eventDetail.html',
                 controller: eventDetailController
+            })
+
+            .when('/addEvent', {
+                templateUrl:'views/addEvent.html',
+                controller: eventListController
             });
+
     }
     config.$inject = ['$routeProvider'];
     return config;

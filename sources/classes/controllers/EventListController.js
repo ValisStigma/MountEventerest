@@ -16,10 +16,6 @@ define([], function () {
                 $scope.error = "Error";
             })
         }
-        $scope.adding = false;
-        $scope.toggleAdd = function(){
-            $scope.adding = !$scope.adding;
-        }
     }
     EventListController.$inject = ['$scope', 'eventRepository'];
     return EventListController;

@@ -75,6 +75,11 @@ form label {
     padding:8px;
 }
 
+.glyphicon-arrow-left {
+    color: white;
+    padding:8px;
+}
+
 .form-group input{
     margin: 5px 10px;
 }
@@ -83,11 +88,13 @@ form label {
     margin: 5px 10px;
 }
 
-.event-details{
+.event-details-container{
     color: white;
+    font-size: large;
+    margin-top: 20px;
+    display: flex;
 }
 
-.back {
-    font-size: large;
-    color: white;
+.event-details-content{
+    margin:auto;
 }

@@ -1,23 +1,42 @@
 <div class="row header-row">
-    <div class="col-xs-10">
+    <div class="col-xs-8">
         <h1 class="title">{{event.name}}</h1>
+    </div>
+    <div class="col-xs-2">
+        <a href="#/" class="add-btn btn btn-round glyphicon glyphicon-arrow-left"></a>
     </div>
     <div class="col-xs-2">
         <label for="addBtn">Guest</label>
         <a href="#/addGuest" class="btn btn-round glyphicon glyphicon-plus add-btn" id="addBtn"></a>
     </div>
 </div>
-<div class="row event-details">
-    <label for="beginEvent">Begin:</label>
-    <p id="beginEvent">{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
-    <label for="endEvent">End:</label>
-    <p id="endEvent">{{event.times.end | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
-    <label for="targetGroup">Target Group:</label>
-    <p id="targetGroup">{{event.targetGroup}} </p>
-    <label for="contributionDescription">Contribution:</label>
-    <p id="contributionDescription">{{event.contributionsDescription}}</p>
-    <label for="locationName">Location:</label>
-    <p id="locationName">{{event.location.name}} {{event.location.street}}</p>
-    <label for="city">City:</label>
-    <p id="city">{{event.location.city}}</p>
+<div class="row event-details-container">
+    <div class="event-details-content">
+        <div class="col-md-6">
+            <label for="beginEvent">Begin:</label>
+            <p id="beginEvent">{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
+        </div>
+        <div class="col-md-6">
+            <label for="endEvent">End:</label>
+            <p id="endEvent">{{event.times.end | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
+        </div>
+        <hr class="col-md-12" size="1">
+        <div class="col-md-6">
+            <label for="targetGroup">Target Group:</label>
+            <p id="targetGroup">{{event.targetGroup}} </p>
+        </div>
+        <div class="col-md-6">
+            <label for="contributionDescription">Contribution:</label>
+            <p id="contributionDescription">{{event.contributionsDescription}}</p>
+        </div>
+        <hr class="col-md-12" size="1">
+        <div class="col-md-6">
+            <label for="locationName">Location:</label>
+            <p id="locationName">{{event.location.name}} {{event.location.street}}</p>
+        </div>
+        <div class="col-md-6">
+            <label for="city">City:</label>
+            <p id="city">{{event.location.city}}</p>
+        </div>
+    </div>
 </div>

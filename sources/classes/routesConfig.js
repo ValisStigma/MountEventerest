@@ -14,6 +14,11 @@ define(['eventDetailController', 'eventListController'], function(eventDetailCon
             .when('/addEvent', {
                 templateUrl:'views/addEvent.html',
                 controller: eventListController
+            })
+
+            .when('/addGuest', {
+                templateUrl:'views/addGuest.html',
+                controller: eventDetailController
             });
 
     }

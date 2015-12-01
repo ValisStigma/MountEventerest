@@ -3,14 +3,21 @@
         <h1 class="title">{{event.name}}</h1>
     </div>
     <div class="col-xs-2">
-        <a href="#/addGuest" class="btn btn-round glyphicon glyphicon-plus add-btn"></a>
+        <label for="addBtn">Guest</label>
+        <a href="#/addGuest" class="btn btn-round glyphicon glyphicon-plus add-btn" id="addBtn"></a>
     </div>
 </div>
-<div>
-    <p>{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
-    <p>{{event.times.end | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
-    <p>{{event.targetGroup}} </p>
-    <p>{{event.contributionsDescription}}</p>
-    <p>{{event.location.name}} {{event.location.street}}</p>
-    <p>{{event.location.city}}</p>
+<div class="row event-details">
+    <label for="beginEvent">Begin:</label>
+    <p id="beginEvent">{{event.times.begin | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
+    <label for="endEvent">End:</label>
+    <p id="endEvent">{{event.times.end | date:"dd.MM.yyyy HH:mm"}}Uhr</p>
+    <label for="targetGroup">Target Group:</label>
+    <p id="targetGroup">{{event.targetGroup}} </p>
+    <label for="contributionDescription">Contribution:</label>
+    <p id="contributionDescription">{{event.contributionsDescription}}</p>
+    <label for="locationName">Location:</label>
+    <p id="locationName">{{event.location.name}} {{event.location.street}}</p>
+    <label for="city">City:</label>
+    <p id="city">{{event.location.city}}</p>
 </div>

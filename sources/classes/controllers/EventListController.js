@@ -1,6 +1,6 @@
 define([], function () {
-    var EventListController = function($scope, eventRepository) {
-        this.scope = $scope;
+    var EventListController = function($scope,$window,eventRepository) {
+
         eventRepository.all(function(data){
            $scope.events = data.events;
         }, function(){
@@ -11,17 +11,13 @@ define([], function () {
             event.times.begin = new Date(event.times.begin);
             event.times.end = new Date(event.times.end);
             eventRepository.add(event, function(data){
-                $scope.events.push(data);
+                $window.location.href = '#/';
             }, function(){
                 $scope.error = "Error";
             })
-        };
-        $scope.adding = false;
-        $scope.toggleAdd = function(){
-            $scope.adding = !$scope.adding;
         }
     }
-    EventListController.$inject = ['$scope', 'eventRepository'];
+    EventListController.$inject = ['$scope','$window','eventRepository'];
     return EventListController;
 });
 

@@ -80,6 +80,11 @@ form label {
     padding:8px;
 }
 
+.glyphicon-edit {
+    color: white;
+    padding:8px;
+}
+
 .form-group input{
     margin: 5px 10px;
 }

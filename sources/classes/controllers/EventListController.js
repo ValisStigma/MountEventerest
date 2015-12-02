@@ -1,6 +1,6 @@
 define([], function () {
     var EventListController = function($scope, eventRepository) {
-
+        this.scope = $scope;
         eventRepository.all(function(data){
            $scope.events = data.events;
         }, function(){
@@ -15,7 +15,7 @@ define([], function () {
             }, function(){
                 $scope.error = "Error";
             })
-        }
+        };
         $scope.adding = false;
         $scope.toggleAdd = function(){
             $scope.adding = !$scope.adding;

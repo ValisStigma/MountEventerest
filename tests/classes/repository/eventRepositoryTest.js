@@ -1,7 +1,13 @@
 define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/eventRepository', 'libraries/angularMocks'],
 	function (EventFactory, Event, EventRepository, AngularMocks) {
+		var answer;
 	'use strict';
-
+	var onSuccess = function(data) {
+		answer = data;
+	};
+	var onError = function() {
+		console.log("Error");
+	};
 	describe('EventRepository', function() {
 		var event, eventRepository, $http, $httpBackend;
 
@@ -10,12 +16,19 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 			$http = $injector.get('$http');
 			$httpBackend = $injector.get('$httpBackend');
 
-			eventRepository = new EventRepository($http);
-			event = EventFactory.createEvent();
 
-			$httpBackend.when('GET', eventRepository.urls.all).respond({
+			$httpBackend.when('POST', "http://127.0.0.1:8080/api/events").respond({
 				events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]
 			});
+			$httpBackend.when('GET', "http://127.0.0.1:8080/api/events").respond({
+				events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]
+			});
+			$httpBackend.when('GET', "http://127.0.0.1:8080/api/events/1").respond({
+				id: 1, name: 'Party'
+			});
+			eventRepository = new EventRepository($http);
+			event = {events: [{id: 1, name: 'Party'},{id: 2, name: 'Concert'}]};
+
 		}));
 
 		afterEach(function() {
@@ -25,26 +38,22 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 
 		describe('get()', function() {
 			beforeEach(function() {
-				eventRepository.add(event);
+				eventRepository.add(event, onSuccess, onError);
+				$httpBackend.flush();
 			});
 
 			describe('by object id', function() {
 				it('returns the object', function() {
-					expect(eventRepository.get(event.id)).toEqual(event);
-				});
-			});
+					eventRepository.get(event.events[0].id, onSuccess, onError);
+					expect(event.events[0].id).toEqual(answer.events[0].id);
+					$httpBackend.flush();
 
-			describe('by inexistent object id', function() {
-				it('returns null', function() {
-					expect(eventRepository.get(null)).toEqual(null);
-					expect(eventRepository.get('abvhf74n6')).toEqual(null);
 				});
 			});
 		});
-
-		describe('all()', function() {
+		/*describe('all()', function() {
 			it('returns an Array', function() {
-				$httpBackend.expectGET(eventRepository.urls.all);
+				$httpBackend.expectGET("http://127.0.0.1:8080/api/events");
 				var events = null;
 				eventRepository.all(function(eventList) {
 					events = eventList;
@@ -98,6 +107,6 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 					expect(status2).toBe(false);
 				});
 			});
-		});
+		});*/
 	});
 });

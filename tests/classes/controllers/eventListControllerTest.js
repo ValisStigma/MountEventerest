@@ -1,27 +1,29 @@
 define(['app/controllers/EventListController', 'frameworks/angular', 'libraries/angularMocks'],
-	function (EventListController, Angular, AngularMocks) {
-	'use strict';
+    function (EventListController, Angular, AngularMocks) {
+        'use strict';
 
-	var scope, eventRepository, $httpBackend;
+        var scope, eventRepository, $httpBackend;
 
-	beforeEach(AngularMocks.inject(function($injector) {
-		scope = $injector.get('$rootScope').$new();
+        beforeEach(AngularMocks.inject(function ($injector) {
+            scope = $injector.get('$rootScope').$new();
 
-		var events = [{id: 1, name: 'Dinner'},{id: 2, name: 'Lunch'},{id: 3, name: 'Brunch'}];
-		// Mock repository to test controller only
-		eventRepository = {
-			all: function(successCallback) {
-				successCallback(events);
-			}
-		};
-	}));
+            var events = [{id: 1, name: 'Dinner'}, {id: 2, name: 'Lunch'}, {id: 3, name: 'Brunch'}];
+            // Mock repository to test controller only
+            eventRepository = {
+                all: function (successCallback) {
+                    successCallback({events: events});
+                }
+            };
+        }));
 
-	describe('EventListController', function() {
-		describe('property scope', function() {
-			it('contains 3 events', function() {
-				var eventListController = new EventListController(scope, eventRepository);
-				expect(3).toBe(eventListController.scope.events.length);
-			});
-		});
-	});
-});
+        describe('EventListController', function () {
+            describe('property scope', function () {
+                it('contains 3 events', function () {
+                    //var events = [{id: 1, name: 'Dinner'}, {id: 2, name: 'Lunch'}, {id: 3, name: 'Brunch'}];
+                    //scope.events = events;
+                    var eventListController = new EventListController(scope, eventRepository);
+                    expect(3).toBe(eventListController.scope.events.length);
+                });
+            });
+        });
+    });

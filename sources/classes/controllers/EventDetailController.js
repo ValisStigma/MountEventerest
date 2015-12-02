@@ -15,6 +15,14 @@ define([], function () {
                 $scope.error = "Error";
             });
         }
+        $scope.editGuest = function(){
+            var event = $scope.event;
+            eventRepository.edit(event.id, function(data){
+                $scope.event = data;
+            }, function(){
+                $scope.error = "Error";
+            });
+        }
     };
     EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams'];
     return EventDetailController;

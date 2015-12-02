@@ -7,7 +7,7 @@ define(['tests/factories/eventFactory','app/model/Event'],
 
 		// setup
 		beforeEach(function() {
-			event = EventFactory.createEvent();
+			event = EventFactory.createEvent(1);
  		});
 
 		describe('set property begin', function(){

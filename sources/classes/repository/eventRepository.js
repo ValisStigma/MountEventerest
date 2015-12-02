@@ -24,7 +24,12 @@ define([], function(){
             response.success(onSuccess);
             response.error(onError);
         };
-        return {all: all, get: get, add: add, addGuest: addGuest};
+        var edit = function(eventid, onSuccess, onError){
+            var response = $http.post(serverUrl + path + "/events/" + eventid);
+            response.success(onSuccess);
+            response.error(onError);
+        }
+        return {all: all, get: get, add: add, addGuest: addGuest, edit: edit};
     };
 
     EventRepository.$inject = ['$http'];

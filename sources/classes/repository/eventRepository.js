@@ -24,12 +24,17 @@ define([], function(){
             response.success(onSuccess);
             response.error(onError);
         };
+        var getGuests = function(event, onSuccess, onError){
+            var response = $http.get(serverUrl + path + "/events/" + event.id + "/guests");
+            response.success(onSuccess);
+            response.error(onError);
+        };
         var edit = function(eventid, onSuccess, onError){
             var response = $http.post(serverUrl + path + "/events/" + eventid);
             response.success(onSuccess);
             response.error(onError);
         }
-        return {all: all, get: get, add: add, addGuest: addGuest, edit: edit};
+        return {all: all, get: get, add: add, addGuest: addGuest, getGuests: getGuests, edit: edit};
     };
 
     EventRepository.$inject = ['$http'];

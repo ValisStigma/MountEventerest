@@ -1,8 +1,13 @@
 define([], function () {
     var EventDetailController = function($scope, eventRepository, $routeParams){
-        var event = $routeParams.id;
-        eventRepository.get(event, function(data){
+        var event_id = $routeParams.id;
+        eventRepository.get(event_id, function(data){
             $scope.event = data;
+        }, function(){
+            $scope.error = "Error";
+        });
+        eventRepository.getGuests(event_id, function(data) {
+            $scope.guests = data.guests;
         }, function(){
             $scope.error = "Error";
         });

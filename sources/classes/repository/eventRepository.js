@@ -25,7 +25,7 @@ define([], function(){
             response.error(onError);
         };
         var getGuests = function(event, onSuccess, onError){
-            var response = $http.get(serverUrl + path + "/events/" + event.id + "/guests");
+            var response = $http.get(serverUrl + path + "/events/" + event + "/guests");
             response.success(onSuccess);
             response.error(onError);
         };

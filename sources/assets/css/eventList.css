@@ -62,11 +62,11 @@ form label {
     margin-top: 18px;
 }
 
-.addEvent-container {
+.add-container {
     display: flex;
 }
 
-.addEvent-form {
+.add-form {
     margin:auto;
 }
 

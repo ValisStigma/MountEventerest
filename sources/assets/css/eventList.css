@@ -2,7 +2,12 @@ body  {
     background-image:url("../image/event_background.jpg");
 }
 
-.container a {
+.main-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    height:100vh;
+}
+
+.container {
     text-decoration: none;
     color: black;
 }
@@ -33,16 +38,46 @@ form label {
     height: 24px;
 }
 
+.title {
+    color: white;
+}
+
+.event-row {
+    display: flex;
+    margin-top: 10px;
+}
+
+.event-btn {
+    font-size: 20px;
+    margin: auto;
+    padding: 0 40px 0 40px;
+}
+
+.header-row {
+    background-color: #0f0f0f;
+}
+
+.addEvent-btn {
+    margin-top: 18px;
+}
+
+.addEvent-container {
+    display: flex;
+}
+
+.addEvent-form {
+    margin:auto;
+}
+
 .glyphicon-plus {
     color: white;
+    padding:8px;
 }
 
-.title {
-    background-color:#2b669a;
-    color: white;
+.form-group input{
+    margin: 5px 10px;
 }
 
-.btn-default {
-    font-size: 20px;
-    margin: 4px;
+.form-group label{
+    margin: 5px 10px;
 }

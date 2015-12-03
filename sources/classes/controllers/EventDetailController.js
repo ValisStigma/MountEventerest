@@ -22,7 +22,7 @@ define([], function () {
                     $scope.error = "Error";
                 });
             } else {
-                $window.alert("Event is full");
+               $window.alert("Event is full");
             }
         };
         $scope.editGuest = function(){
@@ -33,8 +33,9 @@ define([], function () {
                 $scope.error = "Error";
             });
         }
+
     };
-    EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams', 'window'];
+    EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams', '$window'];
     return EventDetailController;
 });
 

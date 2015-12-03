@@ -43,20 +43,25 @@
         </div>
         <div class="col-md-12">
             <h2>Guestlist</h2>
+            <h6>max {{event.maximalAmountOfGuests}} Guests</h6>
         </div>
         <div class="guest-container col-md-12" data-ng-repeat="guest in guests">
             <hr class="col-md-12" size="1">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="guest">Name:</label>
                 <p id="guest">{{guest.name}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="contribution">Contribution:</label>
                 <p id="contribution">{{guest.contribution}}</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="comment">Comment:</label>
                 <p id="comment">{{guest.comment}}</p>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-round glyphicon glyphicon-edit" data-ng-click=""></button>
+                <button type="submit" class="btn btn-round glyphicon glyphicon-erase" data-ng-click=""></button>
             </div>
         </div>
     </div>

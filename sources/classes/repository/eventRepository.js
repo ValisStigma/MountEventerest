@@ -33,7 +33,7 @@ define([], function(){
             var response = $http.post(serverUrl + path + "/events/" + eventid);
             response.success(onSuccess);
             response.error(onError);
-        }
+        };
         return {all: all, get: get, add: add, addGuest: addGuest, getGuests: getGuests, edit: edit};
     };
 

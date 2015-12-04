@@ -52,7 +52,7 @@
                                 <label for="event_maxAmount">Maximum Amount</label>
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" placeholder="Maximum Amount" type="text" data-ng-model="event.maximalAmountOfGuests" id="event_maxAmount" required="required">
+                                <input class="form-control" placeholder="Maximum Amount" type="number" data-ng-model="event.maximalAmountOfGuests" id="event_maxAmount" required="required">
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                 <label for="event_location_plz">PLZ</label>
                             </div>
                             <div class="col-md-6">
-                                <input type="number" data-ng-model="event.location.plz" id="event_location_plz" min="1000" max="9999" required="required">
+                                <input type="number" data-ng-model="event.location.plz" placeholder="PLZ" id="event_location_plz" min="1000" max="9999" required="required">
                             </div>
                         </div>
                     </div>

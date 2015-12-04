@@ -12,18 +12,19 @@ define([], function () {
             $scope.error = "Error";
         });
         $scope.addGuest = function(){
-            var guest = $scope.guest;
-            var amountOfGuests = $scope.guests.length;
+            // var amountOfGuests = $scope.guests.length;
             var event = $scope.event;
-            if(event.maximalAmountOfGuests >= amountOfGuests){
-                eventRepository.addGuest(event, guest, function(data){
-                    $scope.event.guests.push(data);
-                }, function(){
-                    $scope.error = "Error";
-                });
-            } else {
-               $window.alert("Event is full");
-            }
+            var guest = $scope.guest;
+            //if(event.maximalAmountOfGuests >= amountOfGuests){
+            eventRepository.addGuest(event, guest, function(data){
+                $scope.event.guests.push(data);
+                $window.location.href = '#/';
+            }, function(){
+                $scope.error = "Error";
+            });
+            //} else {
+            //  $window.alert("Event is full");
+            //}
         };
         $scope.editGuest = function(){
             var event = $scope.event;
@@ -32,6 +33,9 @@ define([], function () {
             }, function(){
                 $scope.error = "Error";
             });
+        };
+        $scope.deleteGuest = function(){
+
         }
 
     };

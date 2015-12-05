@@ -11,31 +11,25 @@ define([], function () {
         }, function(){
             $scope.error = "Error";
         });
-        $scope.addGuest = function(){
-            // var amountOfGuests = $scope.guests.length;
-            var event = $scope.event;
-            var guest = $scope.guest;
-            //if(event.maximalAmountOfGuests >= amountOfGuests){
-            eventRepository.addGuest(event, guest, function(data){
-                $scope.event.guests.push(data);
-                $window.location.href = '#/';
-            }, function(){
-                $scope.error = "Error";
-            });
-            //} else {
-            //  $window.alert("Event is full");
-            //}
-        };
         $scope.editGuest = function(){
+            var amountOfGuests = $scope.guests.length;
             var event = $scope.event;
-            eventRepository.edit(event.id, function(data){
-                $scope.event = data;
+            if(event.maximalAmountOfGuests >= amountOfGuests){
+                $window.location.href = '#/event/' + event.id + '/addGuest';
+            } else {
+                //TODO: User notificatiion of errors
+                $window.alert("Event is full");
+            }
+        };
+        $scope.deleteGuest = function(guest){
+            var guests = $scope.event.guests;
+            eventRepository.deleteGuest($scope.event.id, guest, function(data){
+                guests.splice(guests.indexOf(data), 1);
+                //TODO: Find better solution to reload array;
+                $window.location.reload();
             }, function(){
                 $scope.error = "Error";
             });
-        };
-        $scope.deleteGuest = function(){
-
         }
 
     };

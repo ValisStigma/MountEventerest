@@ -8,6 +8,7 @@ require.config({
         'eventRepository': 'classes/repository/eventRepository',
         'eventDetailController': 'classes/controllers/EventDetailController',
         'eventListController': 'classes/controllers/EventListController',
+        'addEventController': 'classes/controllers/AddEventController',
         'app': 'classes/'
     },
     // angular does not support async loading out of the box -> use the shim loader

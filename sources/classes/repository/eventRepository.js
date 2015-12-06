@@ -30,7 +30,7 @@ define([], function(){
             response.error(onError);
         };
         var editGuest = function(event, guest, onSuccess, onError){
-            var response = $http.post(serverUrl + path + "/events/" + event + "/guests/" + guest);
+            var response = $http.post(serverUrl + path + "/events/" + event + "/guests/" + guest.id, guest);
             response.success(onSuccess);
             response.error(onError);
         };

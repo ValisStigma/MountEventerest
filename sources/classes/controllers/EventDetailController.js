@@ -1,5 +1,5 @@
 define([], function () {
-    var EventDetailController = function($scope, eventRepository, $routeParams, $window){
+    var EventDetailController = function($scope, eventRepository, $routeParams, $window, editGuestService){
         var event_id = $routeParams.id;
         eventRepository.get(event_id, function(data){
             $scope.event = data;
@@ -11,11 +11,22 @@ define([], function () {
         }, function(){
             $scope.error = "Error";
         });
-        $scope.editGuest = function(){
+        $scope.addGuest = function(){
             var amountOfGuests = $scope.guests.length;
             var event = $scope.event;
             if(event.maximalAmountOfGuests >= amountOfGuests){
+                editGuestService.clear();
                 $window.location.href = '#/event/' + event.id + '/addGuest';
+            } else {
+                $window.alert("Event is full");
+            }
+        };
+        $scope.editGuest = function(guest){
+            var amountOfGuests = $scope.guests.length;
+            var event = $scope.event;
+            if(event.maximalAmountOfGuests >= amountOfGuests){
+                editGuestService.setGuest(guest);
+                $window.location.href = '#/event/' + event.id + '/editGuest/' + guest.id;
             } else {
                 //TODO: User notificatiion of errors
                 $window.alert("Event is full");
@@ -33,7 +44,7 @@ define([], function () {
         }
 
     };
-    EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams', '$window'];
+    EventDetailController.$inject = ['$scope', 'eventRepository', '$routeParams', '$window', 'editGuestService'];
     return EventDetailController;
 });
 

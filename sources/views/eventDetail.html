@@ -6,7 +6,7 @@
         <a href="#/" class="add-btn btn btn-round glyphicon glyphicon-arrow-left"></a>
     </div>
     <div class="col-xs-2">
-        <a href="#/event/{{event.id}}/addGuest" class="btn btn-round glyphicon glyphicon-plus add-btn" id="addBtn"></a>
+        <a data-ng-click="addGuest()" class="btn btn-round glyphicon glyphicon-plus add-btn" id="addBtn"></a>
         <label for="addBtn">{{guests.length}} Guests</label>
     </div>
 </div>
@@ -57,7 +57,7 @@
                 <p id="comment">{{guest.comment}}</p>
             </div>
             <div class="col-md-3">
-                <button type="submit" class="btn btn-round glyphicon glyphicon-edit" data-ng-click="editGuest()"></button>
+                <button type="submit" class="btn btn-round glyphicon glyphicon-edit" data-ng-click="editGuest(guest)"></button>
                 <button type="submit" class="btn btn-round glyphicon glyphicon-erase" data-ng-click="deleteGuest(guest.id)"></button>
             </div>
         </div>

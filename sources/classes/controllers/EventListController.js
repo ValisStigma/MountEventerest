@@ -4,7 +4,7 @@ define([], function () {
         eventRepository.all(function(data){
            $scope.events = data.events;
         }, function(){
-            $scope.error = "Error";
+            showError("Error while loading events");
         });
         $scope.addEvent = function(){
             var event = $scope.event;
@@ -13,10 +13,17 @@ define([], function () {
             eventRepository.add(event, function(data){
                 $window.location.href = '#/';
             }, function(){
-                $scope.error = "Error";
+                showError("Could not load all events");
             })
         }
-    }
+        function showError(message){
+            $scope.error = message;
+            $scope.isError = true;
+            setInterval(function(){
+                $scope.isError = false;
+            }, 5000);
+        }
+    };
     EventListController.$inject = ['$scope','$window','eventRepository'];
     return EventListController;
 });

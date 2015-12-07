@@ -4,12 +4,13 @@ define([], function () {
         eventRepository.get(event_id, function(data){
             $scope.event = data;
         }, function(){
-            $scope.error = "Error";
+            showError("Could not load events");
         });
         eventRepository.getGuests(event_id, function(data) {
             $scope.guests = data.guests;
         }, function(){
-            $scope.error = "Error";
+            showError("Could not load guests");
+
         });
         $scope.addGuest = function(){
             var amountOfGuests = $scope.guests.length;
@@ -18,7 +19,7 @@ define([], function () {
                 editGuestService.clear();
                 $window.location.href = '#/event/' + event.id + '/addGuest';
             } else {
-                $window.alert("Event is full");
+                showError("Event is overbooked. Cannot add another guest");
             }
         };
         $scope.editGuest = function(guest){
@@ -28,8 +29,7 @@ define([], function () {
                 editGuestService.setGuest(guest);
                 $window.location.href = '#/event/' + event.id + '/editGuest/' + guest.id;
             } else {
-                //TODO: User notificatiion of errors
-                $window.alert("Event is full");
+                showError("Event is overbooked. Cannot add another guest");
             }
         };
         $scope.deleteGuest = function(guest){
@@ -37,10 +37,17 @@ define([], function () {
             eventRepository.deleteGuest($scope.event.id, guest, function(data){
                 guests.splice(guests.indexOf(data), 1);
                 //TODO: Find better solution to reload array;
-                $window.location.reload();
+                //$window.location.reload();
             }, function(){
-                $scope.error = "Error";
+                showError("Could not delete guest");
             });
+        }
+        function showError(message){
+            $scope.error = message
+            $scope.isError = true;
+            setInterval(function(){
+                $scope.isError = false;
+            }, 5000);
         }
 
     };

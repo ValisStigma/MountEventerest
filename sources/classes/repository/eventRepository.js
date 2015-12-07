@@ -19,6 +19,11 @@ define([], function(){
             response.success(onSuccess);
             response.error(onError);
         };
+        var edit = function(event, onSuccess, onError){
+            var response = $http.post(serverUrl + path + "/events/" + event.id, event);
+            response.success(onSuccess);
+            response.error(onError);
+        };
         var addGuest = function(event_id, guest, onSuccess, onError){
             var response = $http.post(serverUrl + path + "/events/" + event_id + "/guests", guest);
             response.success(onSuccess);
@@ -36,11 +41,6 @@ define([], function(){
         };
         var deleteGuest = function(event, guest, onSuccess, onError){
             var response = $http.delete(serverUrl + path + "/events/" + event + "/guests/" + guest);
-            response.success(onSuccess);
-            response.error(onError);
-        };
-        var edit = function(eventid, onSuccess, onError){
-            var response = $http.post(serverUrl + path + "/events/" + eventid);
             response.success(onSuccess);
             response.error(onError);
         };

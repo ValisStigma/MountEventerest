@@ -10,6 +10,9 @@
         <label for="addBtn">{{guests.length}} Guests</label>
     </div>
 </div>
+<div data-ng-show="isError">
+    <p style="color: white;">{{error}}</p>
+</div>
 <div class="row event-details-container">
     <div class="event-details-content">
         <div class="col-md-6">

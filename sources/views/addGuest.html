@@ -6,6 +6,9 @@
         <a href="#/event/{{event_id}}" class="add-btn btn btn-round glyphicon glyphicon-arrow-left"></a>
     </div>
 </div>
+<div data-ng-show="isError">
+    <p style="color: white;">{{error}}</p>
+</div>
 <div class="row">
     <div class="add-container">
         <form id="add_guest" class="navbar-form add-form">

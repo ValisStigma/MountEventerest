@@ -20,7 +20,14 @@ define([], function () {
             $window.location.href = '#/event/' + event_id;
         };
         var onError = function(){
-            $scope.error = "Error";
+            showError("Could not process request");
+        };
+        function showError(message){
+            $scope.error = message;
+            $scope.isError = true;
+            setInterval(function(){
+                $scope.isError = false;
+            }, 5000);
         }
     };
     GuestController.$inject = ['$scope', 'eventRepository', '$routeParams', '$window', 'editGuestService'];

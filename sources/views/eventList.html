@@ -7,6 +7,9 @@
         <a href="#/addEvent" class="btn btn-round glyphicon glyphicon-plus add-btn"></a>
     </div>
 </div>
+<div data-ng-show="isError">
+    <p style="color: white;">{{error}}</p>
+</div>
 
 <div class="row">
     <div data-ng-repeat="event in events" class="event-row">

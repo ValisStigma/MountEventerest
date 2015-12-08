@@ -51,7 +51,7 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 				});
 			});
 		});
-		/*describe('all()', function() {
+		describe('all()', function() {
 			it('returns an Array', function() {
 				$httpBackend.expectGET("http://127.0.0.1:8080/api/events");
 				var events = null;
@@ -107,6 +107,6 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 					expect(status2).toBe(false);
 				});
 			});
-		});*/
+		});
 	});
 });

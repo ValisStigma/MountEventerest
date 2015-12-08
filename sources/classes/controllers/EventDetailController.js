@@ -15,7 +15,7 @@ define([], function () {
         $scope.addGuest = function(){
             var amountOfGuests = $scope.guests.length;
             var event = $scope.event;
-            if(event.maximalAmountOfGuests >= amountOfGuests){
+            if(event.maximalAmountOfGuests > amountOfGuests){
                 editGuestService.clear();
                 $window.location.href = '#/event/' + event.id + '/addGuest';
             } else {
@@ -33,21 +33,24 @@ define([], function () {
             }
         };
         $scope.deleteGuest = function(guest){
-            var guests = $scope.event.guests;
             eventRepository.deleteGuest($scope.event.id, guest, function(data){
-                guests.splice(guests.indexOf(data), 1);
-                //TODO: Find better solution to reload array;
-                //$window.location.reload();
+                var currentGuest = $scope.guests.filter(function(g){
+                    return g.id === data.id;
+                })[0];
+                $scope.guests.splice($scope.guests.indexOf(currentGuest), 1);
             }, function(){
                 showError("Could not delete guest");
             });
         }
-        function showError(message){
-            $scope.error = message
+        function showError(message, persistent) {
+            $scope.error = message;
             $scope.isError = true;
-            setInterval(function(){
-                $scope.isError = false;
-            }, 5000);
+            if (!persistent) {
+                setTimeout(function () {
+                    $scope.isError = false;
+                    $scope.$apply();
+                }, 5000);
+            }
         }
 
     };

@@ -9,10 +9,12 @@ define([], function () {
         }
         $scope.addGuest = function(){
             var guest = $scope.guest;
-            if(!guestEdit) {
-                eventRepository.addGuest(event_id, guest, onSuccess, onError);
-            } else {
-                eventRepository.editGuest(event_id, guest, onSuccess, onError);
+            if(guest && guest.name) {
+                if (!guestEdit) {
+                    eventRepository.addGuest(event_id, guest, onSuccess, onError);
+                } else {
+                    eventRepository.editGuest(event_id, guest, onSuccess, onError);
+                }
             }
         };
         var onSuccess = function(){
@@ -20,14 +22,17 @@ define([], function () {
             $window.location.href = '#/event/' + event_id;
         };
         var onError = function(){
-            showError("Could not process request");
+            showError("Could not process request", false);
         };
-        function showError(message){
+        function showError(message, persistent) {
             $scope.error = message;
             $scope.isError = true;
-            setInterval(function(){
-                $scope.isError = false;
-            }, 5000);
+            if (!persistent) {
+                setTimeout(function () {
+                    $scope.isError = false;
+                    $scope.$apply();
+                }, 5000);
+            }
         }
     };
     GuestController.$inject = ['$scope', 'eventRepository', '$routeParams', '$window', 'editGuestService'];

@@ -10,6 +10,7 @@ require.config({
         'eventListController': 'classes/controllers/EventListController',
         'guestController': 'classes/controllers/guestController',
         'editGuestService': 'classes/services/editGuestService',
+        'editEventService': 'classes/services/editEventService',
         'app': 'classes/'
     },
     // angular does not support async loading out of the box -> use the shim loader

@@ -35,7 +35,7 @@ define([], function () {
         $scope.deleteGuest = function(guest){
             eventRepository.deleteGuest($scope.event.id, guest.id, function(data){
                 var currentGuest = $scope.guests.filter(function(g){
-                    return g.id === data.id;
+                    return g.id === data[0].id;
                 })[0];
                 showRemovedGuest(guest);
                 $scope.guests.splice($scope.guests.indexOf(currentGuest), 1);

@@ -7,12 +7,16 @@
     </div>
     <div class="col-xs-2">
         <a data-ng-click="addGuest()" class="btn btn-round glyphicon glyphicon-plus add-btn" id="addBtn"></a>
-        <label for="addBtn">{{guests.length}} Guests</label>
     </div>
 </div>
 <div class="panel panel-danger" data-ng-show="isError">
     <div class="panel-heading">An Error occured</div>
     <div class="panel-body">{{error}}</div>
+</div>
+<div class="panel panel-info" data-ng-show="isDeleted">
+    <div class="panel-body">
+        <div>{{guest.name}} has been removed</div>
+    </div>
 </div>
 <div class="row event-details-container">
     <div class="event-details-content">
@@ -44,7 +48,7 @@
         </div>
         <div class="col-md-12">
             <h2>Guestlist</h2>
-            <h6>max {{event.maximalAmountOfGuests}} Guests</h6>
+            <h5>{{guests.length}} / {{event.maximalAmountOfGuests}} Guests</h5>
         </div>
         <div class="guest-container col-md-12" data-ng-repeat="guest in guests">
             <hr class="col-md-12" size="1">
@@ -62,7 +66,7 @@
             </div>
             <div class="col-md-3">
                 <button type="submit" class="btn btn-round glyphicon glyphicon-edit" data-ng-click="editGuest(guest)"></button>
-                <button type="submit" class="btn btn-round glyphicon glyphicon-erase" data-ng-click="deleteGuest(guest.id)"></button>
+                <button type="submit" class="btn btn-round glyphicon glyphicon-erase" data-ng-click="deleteGuest(guest)"></button>
             </div>
         </div>
     </div>

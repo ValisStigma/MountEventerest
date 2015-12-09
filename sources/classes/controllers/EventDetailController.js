@@ -33,15 +33,16 @@ define([], function () {
             }
         };
         $scope.deleteGuest = function(guest){
-            eventRepository.deleteGuest($scope.event.id, guest, function(data){
+            eventRepository.deleteGuest($scope.event.id, guest.id, function(data){
                 var currentGuest = $scope.guests.filter(function(g){
                     return g.id === data.id;
                 })[0];
+                showRemovedGuest(guest);
                 $scope.guests.splice($scope.guests.indexOf(currentGuest), 1);
             }, function(){
                 showError("Could not delete guest");
             });
-        }
+        };
         function showError(message, persistent) {
             $scope.error = message;
             $scope.isError = true;
@@ -51,6 +52,14 @@ define([], function () {
                     $scope.$apply();
                 }, 5000);
             }
+        }
+        function showRemovedGuest(removedGuest) {
+            $scope.guest = removedGuest;
+            $scope.isDeleted = true;
+            setTimeout(function() {
+                $scope.isDeleted = false;
+                $scope.$apply();
+            }, 5000);
         }
 
     };

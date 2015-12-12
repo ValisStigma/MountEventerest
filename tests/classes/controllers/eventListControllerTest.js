@@ -19,10 +19,9 @@ define(['app/controllers/EventListController', 'frameworks/angular', 'libraries/
         describe('EventListController', function () {
             describe('property scope', function () {
                 it('contains 3 events', function () {
-                    //var events = [{id: 1, name: 'Dinner'}, {id: 2, name: 'Lunch'}, {id: 3, name: 'Brunch'}];
-                    //scope.events = events;
-                    var eventListController = new EventListController(scope, eventRepository);
-                    expect(3).toBe(eventListController.scope.events.length);
+                    var window = AngularMocks.$window;
+                    var eventListController = new EventListController(scope, window, eventRepository);
+                    expect(3).toBe(scope.events.length);
                 });
             });
         });

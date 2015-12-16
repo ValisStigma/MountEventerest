@@ -3,6 +3,8 @@ require.config({
 	paths: {
 		'frameworks/angular': '../sources/frameworks/angular/angular.min',
 		'app': '../sources/classes',
+		'event': '../sources/classes/model/Event',
+        'guest': '../sources/classes/model/Guest',
 		'tests': 'classes',
 		'libraries/angularMocks': 'libraries/angular/angularMocks',
 		'libraries/jasmine': ['libraries/jasmine/jasmine'],

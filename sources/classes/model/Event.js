@@ -26,5 +26,16 @@ define([], function(){
             }
         });
     };
+    Event.createFromDTO = function(eventDTO){
+        var event = new Event(
+            eventDTO.name, eventDTO.description, eventDTO.targetGroup,
+            eventDTO.contributionsDescription, eventDTO.location,
+            eventDTO.times, eventDTO.maximalAmountOfGuests, eventDTO.id
+        );
+        if(eventDTO.guests){
+            event.guests = eventDTO.guests;
+        }
+        return event;
+    };
     return Event;
 });

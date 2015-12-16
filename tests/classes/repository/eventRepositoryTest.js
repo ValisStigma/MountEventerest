@@ -1,4 +1,4 @@
-define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/eventRepository', 'libraries/angularMocks'],
+define(['tests/factories/eventFactory', 'event', 'app/repository/eventRepository', 'libraries/angularMocks'],
 	function (EventFactory, Event, EventRepository, AngularMocks) {
 	'use strict';
 	var onError = function() {
@@ -69,8 +69,8 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 			it('returns real javascript objects', function() {
 					$httpBackend.expectGET("http://127.0.0.1:8080/api/events");
 					eventRepository.all(function(data){
-                        expect(data.events[0]).toEqual(jasmine.any(Object));
-                        expect(data.events[1]).toEqual(jasmine.any(Object));
+                        expect(data.events[0]).toEqual(jasmine.any(Event));
+                        expect(data.events[1]).toEqual(jasmine.any(Event));
                     }, onError);
 					$httpBackend.flush();
 			});
@@ -79,11 +79,12 @@ define(['tests/factories/eventFactory', 'app/model/Event', 'app/repository/event
 		describe('add()', function() {
 			it('inserts element', function() {
                 var currentEvent = {id: 1, name: 'Party'};
+                $httpBackend.expectPOST("http://127.0.0.1:8080/api/events", currentEvent);
 				eventRepository.add(currentEvent, function(data){
                     expect(data.id).toBe(1);
+                    expect(data).toEqual(jasmine.any(Event));
                 }, onError);
                 $httpBackend.flush();
-
 			});
 		});
 	});

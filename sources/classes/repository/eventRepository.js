@@ -1,4 +1,4 @@
-define([], function(){
+define(['event', 'guest'], function(Event, Guest){
     "use strict";
     var serverUrl = "http://127.0.0.1:8080";
     var path = "/api";
@@ -6,17 +6,28 @@ define([], function(){
     var EventRepository = function($http){
         var all = function(onSuccess, onError){
             var response = $http.get(serverUrl + path + "/events");
-            response.success(onSuccess);
+            response.success(function(data){
+                data.events = data.events.map(function(eventDTO){
+                    return Event.createFromDTO(eventDTO);
+                });
+                onSuccess(data);
+            });
             response.error(onError);
         };
         var get = function(eventid, onSuccess, onError){
             var response = $http.get(serverUrl + path + "/events/" + eventid);
-            response.success(onSuccess);
+            response.success(function(data){
+                data = Event.createFromDTO(data);
+                onSuccess(data);
+            });
             response.error(onError);
         };
         var add = function(event, onSuccess, onError){
             var response = $http.post(serverUrl + path + "/events", event);
-            response.success(onSuccess);
+            response.success(function(data){
+                data = Event.createFromDTO(data);
+                onSuccess(data);
+            });
             response.error(onError);
         };
         var edit = function(event, onSuccess, onError){
@@ -31,7 +42,12 @@ define([], function(){
         };
         var getGuests = function(event, onSuccess, onError){
             var response = $http.get(serverUrl + path + "/events/" + event + "/guests");
-            response.success(onSuccess);
+            response.success(function(data){
+                data.guests = data.guests.map(function(guestDTO){
+                    return Guest.createFromDTO(guestDTO);
+                });
+                onSuccess(data);
+            });
             response.error(onError);
         };
         var editGuest = function(event, guest, onSuccess, onError){
